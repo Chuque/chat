@@ -1,27 +1,25 @@
 package chat.message;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import java.util.UUID;
+import javax.persistence.*;
 
 @Entity
 public class Message {
 
-    @Id
-    @GeneratedValue
-    private int id;
+    private Integer id;
     private String text;
 
-    public int getId() {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
+    @Column(name = "text")
     public String getText() {
         return text;
     }

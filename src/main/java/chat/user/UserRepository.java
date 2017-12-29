@@ -1,16 +1,13 @@
 package chat.user;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQuery;
-import java.util.ArrayList;
 import java.util.UUID;
 
-public interface UserRepository extends CrudRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
-
-    ArrayList<User> getAllUsers();
+    @Transactional(readOnly = true)
+    User findById(UUID id);
 
 }

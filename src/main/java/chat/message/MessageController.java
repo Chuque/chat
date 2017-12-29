@@ -17,15 +17,11 @@ public class MessageController {
     @PostMapping
     @Transactional
     public void postMessage(@RequestBody MessageDTO messageDTO){
-        Message message = messageDTO.buildMessage();
-        messageRepository.create(message);
+        //TODO save the message on database
     }
 
-    @GetMapping
-//    public List<String> getMessages(){
-        //TODO retornar lista de mensagens
-    public ArrayList<Message> getMessages(){
-        return messageRepository.getAllMessages();
-    }
-
+//    @GetMapping
+//    public List<String> getMessages() {
+//        //TODO retornar lista de mensagens
+//    }
 }

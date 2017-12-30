@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -17,11 +17,13 @@ public class MessageController {
     @PostMapping
     @Transactional
     public void postMessage(@RequestBody MessageDTO messageDTO){
-        //TODO save the message on database
+        Message message = messageDTO.buildMessage();
+        messageRepository.save(message);
     }
 
-//    @GetMapping
-//    public List<String> getMessages() {
-//        //TODO retornar lista de mensagens
-//    }
+    @GetMapping
+    public List<String> getMessages() {
+        //TODO retornar lista de mensagens
+        return Collections.emptyList();
+    }
 }

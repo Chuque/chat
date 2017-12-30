@@ -2,8 +2,6 @@ package chat.message;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import java.util.UUID;
-
 public class MessageDTO {
 
     @NotBlank
@@ -19,7 +17,6 @@ public class MessageDTO {
 
     public Message buildMessage() {
         Message message = new Message();
-//        message.setId(UUID.randomUUID());
         message.setText(this.text);
         return message;
     }

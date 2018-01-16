@@ -1,16 +1,23 @@
 package chat.message;
 
+import chat.user.User;
+
 import javax.persistence.*;
 
 @Entity
 public class Message {
 
-    private Integer id;
-    private String text;
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "text")
+    private String text;
+    @ManyToOne
+    @JoinColumn(name = "user_Id")
+    private User user;
+
+
     public Integer getId() {
         return id;
     }
@@ -19,7 +26,6 @@ public class Message {
         this.id = id;
     }
 
-    @Column(name = "text")
     public String getText() {
         return text;
     }
